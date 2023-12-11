@@ -1,4 +1,4 @@
-# OpenGL_Boilerplate
+# OpenGL Boilerplate Template
 
 1. Install [Visual Studio](https://visualstudio.microsoft.com/de/downloads/)
 2. Clone this repository
