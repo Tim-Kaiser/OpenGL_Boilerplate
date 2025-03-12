@@ -1,15 +1,14 @@
 #version 460
 
-in vec3 vertex;
-in vec2 textureCoord;
+layout (location=0)in vec3 vertex;
+layout (location=1)in vec3 normal;
+layout (location=2)in vec2 uv;
 
-out vec3 col;
-out vec2 uv;
+out vec2 vUv;
 out vec3 vertexOut;
 
 void main(){
-	gl_Position = vec4(vertex, 1.0);
-
-	uv = textureCoord;
-	vertexOut = vec3(textureCoord, 0.);
+	vUv = uv;
+	vertexOut = vertex;
+	gl_Position = vec4(vertexOut,  1.);
 }

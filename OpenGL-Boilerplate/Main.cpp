@@ -1,60 +1,61 @@
+#define GLFW_INCLUDE_NONE
+
+#include "Window.h"
+#include "ShaderLoader.h"
+#include "ObjectLoader.h"
+#include "Model.h"
+
+#include <vector>
 #include <glm.hpp>
-#include <iostream>
-#include <SDL.h>
-#include <glad/glad.h>
 
-
-#include "Screen.h"
-#include "Input.h"
-#include "Shader.h"
-#include "Quad.h"
-
-bool running = true;
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	}
+}
 
 int main(int argc, char* arfv[]) {
-	Screen::Instance()->Init();
+
+	Window window("OpenGL Boilerplate");
+	window.setKeycallback(key_callback);
+
+
 
 	//===== SHADER INIT =====
-	if (!Shader::Instance()->CreateProgram()) {
-		return 0;
+	ShaderLoader shaderLoader;
+
+	std::unique_ptr<Shader> renderShader = shaderLoader.CreateShaders();
+	shaderLoader.CompileShaders("Shaders/main.vert", renderShader->m_vertexShaderID);
+	shaderLoader.CompileShaders("Shaders/main.frag", renderShader->m_fragmentShaderID);
+
+	shaderLoader.AttachShaders(*renderShader);
+	shaderLoader.LinkProgram(*renderShader);
+
+	Object obj;
+	loadObject("Objects/quad.obj", obj);
+	Model quadModel(&obj, false);
+
+	double startTime = glfwGetTime();
+
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	while (window.Open()) {
+
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		GLfloat timeSinceStart = (float(glfwGetTime()) - float(startTime));
+		shaderLoader.SendUniformData("time", timeSinceStart);
+
+		quadModel.Render();
+
+		window.Update();
 	}
 
-	if (!Shader::Instance()->CreateShaders()) {
-		return 0;
-	}
-	if (!Shader::Instance()->CompileShaders("Shaders/main.vert", Shader::ShaderType::VERTEX_SHADER)) {
-		return -1;
-	}
-	if (!Shader::Instance()->CompileShaders("Shaders/main.frag", Shader::ShaderType::FRAGMENT_SHADER)) {
-		return -1;
-	}
-	Shader::Instance()->AttachShaders();
+	shaderLoader.DetachShaders(*renderShader);
 
-	if (!Shader::Instance()->LinkProgram()) {
-		return 0;
-	}
+	shaderLoader.DestroyShaders(*renderShader);
+	shaderLoader.DestroyProgram(*renderShader);
 
-
-
-	Quad quad;
-
-	//==================
-
-	while (running) {
-		Screen::Instance()->Clear();
-		Input::Instance()->Update();
-		if (Input::Instance()->isXClicked()) {
-			running = false;
-		}
-
-		quad.Render();
-
-		Screen::Instance()->SwapBuf();
-	}
-
-	Shader::Instance()->DetachShaders();
-	Shader::Instance()->DestroyShaders();
-	Shader::Instance()->DestroyProgram();
-	Screen::Instance()->Close();
 	return 0;
 }
