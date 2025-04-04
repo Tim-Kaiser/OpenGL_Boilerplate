@@ -26,12 +26,7 @@ int main(int argc, char* arfv[]) {
 	//===== SHADER INIT =====
 	ShaderLoader shaderLoader;
 
-	std::unique_ptr<Shader> renderShader = shaderLoader.CreateShaders();
-	shaderLoader.CompileShaders("Shaders/main.vert", renderShader->m_vertexShaderID);
-	shaderLoader.CompileShaders("Shaders/main.frag", renderShader->m_fragmentShaderID);
-
-	shaderLoader.AttachShaders(*renderShader);
-	shaderLoader.LinkProgram(*renderShader);
+	std::unique_ptr<Shader> renderShader = shaderLoader.CreateShaders("Shaders/main.vert", "Shaders/main.frag");
 
 	Object obj;
 	loadObject("Objects/quad.obj", obj);
@@ -55,7 +50,7 @@ int main(int argc, char* arfv[]) {
 	shaderLoader.DetachShaders(*renderShader);
 
 	shaderLoader.DestroyShaders(*renderShader);
-	shaderLoader.DestroyProgram(*renderShader);
+	shaderLoader.DestroyProgram(renderShader->m_shaderProgramID);
 
 	return 0;
 }
