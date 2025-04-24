@@ -22,7 +22,6 @@ int main(int argc, char* arfv[]) {
 	window.setKeycallback(key_callback);
 
 
-
 	//===== SHADER INIT =====
 	ShaderLoader shaderLoader;
 

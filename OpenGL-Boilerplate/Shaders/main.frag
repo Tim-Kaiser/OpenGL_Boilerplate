@@ -7,5 +7,8 @@ uniform float time;
  out vec4 fragCol;
 
 void main(){
-	fragCol = vec4(vUv,0.,1.);
+
+	vec2 st = vUv - 0.5 * tan(time);
+
+	fragCol = vec4(st,0.,1.);
 }

@@ -9,6 +9,9 @@ out vec3 vertexOut;
 
 void main(){
 	vUv = uv;
+
+
+
 	vertexOut = vertex;
 	gl_Position = vec4(vertexOut,  1.);
 }
