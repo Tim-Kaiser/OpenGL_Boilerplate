@@ -1,3 +1,7 @@
+[![GitHub license](https://img.shields.io/github/license/Tim-Kaiser/OpenGL_Boilerplate.svg)](https://github.com/Tim-Kaiser/OpenGL_Boilerplate/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/Tim-Kaiser/OpenGL_Boilerplate.svg)](https://github.com/Tim-Kaiser/OpenGL_Boilerplate/issues)
+
+
 # Table of Contents
 - [Getting started](#getting-started)
   - [Quick start guide](#quick-start-guide)
