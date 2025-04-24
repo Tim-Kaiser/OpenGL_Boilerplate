@@ -39,13 +39,23 @@ This creates a fullscreen window (Exit with ESC) and renders a quad with a basic
 
 # Project Showcase
 
- TODO - add references to projects using this template
+[Slime mold simulation](https://github.com/Tim-Kaiser/Slime_Mold)
+
+https://github.com/user-attachments/assets/4386fa00-a964-4518-8b0d-0b2c21905f6c
+
+[Cell growth simulation](https://github.com/Tim-Kaiser/cellular-forms)
+
+https://github.com/user-attachments/assets/88107231-6a9d-4613-b98a-508e18864188
 
 
+[Cellular automata](https://github.com/Tim-Kaiser/Image_Transition)
+
+https://github.com/user-attachments/assets/660e0b14-40c1-438d-ba57-70702daf3ce1
 
 # Features
 
 TODO - Details
+
 
 - deferred shading
 - compute shaders
