@@ -5,6 +5,7 @@
 # Table of Contents
 - [Getting started](#getting-started)
   - [Quick start guide](#quick-start-guide)
+  - [Controls](#controls)
   - [Renaming the project](#renaming-the-project)
 - [Project showcase](#project-showcase)
 - [Features](#features)
@@ -27,6 +28,11 @@ This template currently only runs on windows with OpenGL 4.6. Support for Linux 
 
 This creates a fullscreen window (Exit with ESC) and renders a quad with a basic shader. 
 
+## Controls
+
+ESC - Close the window. In fullscreen mode (standard) this is currently the only way to close the application.
+
+Space - Take a screenshot. It's saved in `Screenshots` and named `frame_{frame_number}`.
 
 ## Renaming the project
 
