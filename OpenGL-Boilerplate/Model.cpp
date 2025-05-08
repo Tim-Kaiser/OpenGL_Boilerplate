@@ -70,6 +70,7 @@ Model::~Model()
 	{
 		glDeleteBuffers(1, &m_mesh->instancedPosVBO);
 	}
+	free(m_mesh);
 }
 
 void Model::setPosition(glm::vec3 pos)
@@ -83,7 +84,7 @@ void Model::setRotation(glm::vec3 rot)
 void Model::Render()
 {
 	glBindVertexArray(m_mesh->VAO);
-	glDrawArrays(GL_TRIANGLES, 0, m_mesh->obj->vertices.size());
+	glDrawArrays(GL_TRIANGLES, 0, (GLsizei)m_mesh->obj->vertices.size());
 	glBindVertexArray(0);
 }
 
@@ -91,7 +92,7 @@ void Model::RenderInstanced(int instanceCount)
 {
 	glBindVertexArray(m_mesh->VAO);
 	//glDrawElementsInstanced(GL_TRIANGLES, instanceCount, GL_UNSIGNED_INT, 0, 1000);
-	glDrawArraysInstanced(GL_TRIANGLES, 0, m_mesh->obj->vertices.size(), instanceCount);
+	glDrawArraysInstanced(GL_TRIANGLES, 0, (GLsizei)m_mesh->obj->vertices.size(), instanceCount);
 	glBindVertexArray(0);
 }
 
