@@ -26,7 +26,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 }
 
 
-int main(int argc, char* arfv[]) {
+int main(int argc, char* argv[]) {
 
 	Window window("OpenGL Boilerplate");
 	window.setKeycallback(key_callback);
@@ -70,11 +70,6 @@ int main(int argc, char* arfv[]) {
 		window.Update();
 		framecount++;
 	}
-
-	shaderLoader.DetachShaders(*renderShader);
-
-	shaderLoader.DestroyShaders(*renderShader);
-	shaderLoader.DestroyProgram(renderShader->m_shaderProgramID);
 
 	return 0;
 }

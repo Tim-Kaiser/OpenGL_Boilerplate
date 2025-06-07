@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioUtils.cpp" />
     <ClCompile Include="gl.c" />
     <ClCompile Include="ImageUtils.cpp" />
     <ClCompile Include="lodepng.cpp" />
@@ -157,6 +158,7 @@
     <None Include="Shaders\main.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioUtils.h" />
     <ClInclude Include="ImageUtils.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="Model.h" />

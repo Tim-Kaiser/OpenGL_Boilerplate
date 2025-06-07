@@ -42,6 +42,9 @@
     <ClCompile Include="lodepng.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="AudioUtils.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\main.frag">
@@ -68,6 +71,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="lodepng.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioUtils.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

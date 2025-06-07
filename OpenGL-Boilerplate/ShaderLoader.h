@@ -27,7 +27,7 @@ class ShaderLoader {
 public:
 
 	// === SHADER ===
-
+	~ShaderLoader();
 	std::unique_ptr<Shader> CreateShaders(const std::string& vertexShaderFilename, const std::string& fragmentShaderFilename);
 
 	void DetachShaders(Shader& shader);
@@ -63,4 +63,6 @@ private:
 
 	GLint GetUniformID(const std::string& uniformName);
 
+	std::vector<Shader> m_createdShaders;
+	std::vector<ComputeShader> m_createdComputeShaders;
 };

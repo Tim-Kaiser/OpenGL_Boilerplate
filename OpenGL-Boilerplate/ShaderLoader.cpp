@@ -5,6 +5,26 @@
 #include "ShaderLoader.h"
 
 
+ShaderLoader::~ShaderLoader()
+{
+    for (Shader s : m_createdShaders)
+    {
+        DetachShaders(s);
+        DestroyShaders(s);
+        DestroyProgram(s.m_shaderProgramID);
+        std::cout << "Successfully destroyed shader" << std::endl;
+    }
+
+    for (ComputeShader s : m_createdComputeShaders)
+    {
+        DetachShaders(s);
+        DestroyShaders(s);
+        DestroyProgram(s.m_shaderProgramID);
+        std::cout << "Successfully destroyed compute shader" << std::endl;
+
+    }
+}
+
 std::unique_ptr<Shader> ShaderLoader::CreateShaders(const std::string& vertexShaderFilename, const std::string& fragmentShaderFilename)
 {
     GLuint vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
@@ -21,10 +41,13 @@ std::unique_ptr<Shader> ShaderLoader::CreateShaders(const std::string& vertexSha
     shader->m_fragmentShaderID = fragmentShaderID;
     shader->m_vertexShaderID = vertexShaderID;
 
+
     CompileShaders(vertexShaderFilename, shader->m_vertexShaderID);
     CompileShaders(fragmentShaderFilename, shader->m_fragmentShaderID);
     AttachShaders(*shader);
     LinkProgram(shader->m_shaderProgramID);
+
+    m_createdShaders.push_back(*shader);
 
     return shader;
 }
@@ -130,6 +153,8 @@ std::unique_ptr<ComputeShader> ShaderLoader::CreateComputeShader(const std::stri
     CompileShaders(computeShaderFilename, computeShader->m_computeShaderID);
     AttachShaders(*computeShader);
     LinkProgram(computeShader->m_shaderProgramID);
+
+    m_createdComputeShaders.push_back(*computeShader);
 
     return computeShader;
 }
