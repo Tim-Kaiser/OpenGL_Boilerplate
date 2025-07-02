@@ -42,7 +42,7 @@
     <ClCompile Include="lodepng.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="AudioUtils.cpp">
+    <ClCompile Include="AudioManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -73,7 +73,7 @@
     <ClInclude Include="lodepng.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="AudioUtils.h">
+    <ClInclude Include="AudioManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

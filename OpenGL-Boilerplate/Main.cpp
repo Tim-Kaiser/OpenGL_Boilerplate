@@ -1,10 +1,13 @@
 #define GLFW_INCLUDE_NONE
+#define SDL_MAIN_USE_CALLBACKS 1
+
 
 #include "Window.h"
 #include "ShaderLoader.h"
 #include "ObjectLoader.h"
 #include "Model.h"
 #include "ImageUtils.h"
+#include "AudioManager.h"
 
 #include <vector>
 #include <glm.hpp>
